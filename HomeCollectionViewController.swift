@@ -1,18 +1,16 @@
 //
-//  BasicCollectionViewController.swift
+//  HomeCollectionViewController.swift
 //  Basic Collection View
 //
-//  Created by Naman Alagh on 15/03/23.
+//  Created by Naman Alagh on 19/04/23.
 //
 
 import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class BasicCollectionViewController: UICollectionViewController {
+class HomeCollectionViewController: UICollectionViewController {
 
-    private let items = ["Tamil Nadu","Maharashtra","Punjab","Telangana","Assam","Madhya Pradesh","Uttar Pradesh","Karnataka","Kerala","Rajasthan","Bihar","Haryana","Gujarat","Jammu and Kashmir","Chattisgarh","Jharkhand","Arunachal Pradesh", "Andhra Pradesh", "Meghalaya"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,23 +18,11 @@ class BasicCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.setCollectionViewLayout(generateLayout(), animated: false)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
         // Do any additional setup after loading the view.
     }
 
-    private func generateLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
-        group.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 5, bottom: 1, trailing: 5)
-        let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        
-        return layout
-    }
-    
     /*
     // MARK: - Navigation
 
@@ -51,19 +37,18 @@ class BasicCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return items.count
+        return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BasicCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        cell.label.text = items[indexPath.item]
         // Configure the cell
     
         return cell
