@@ -13,31 +13,34 @@ class HomeViewController: UIViewController,  UICollectionViewDataSource, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeCollectionView.setCollectionViewLayout(generateLayout(), animated: false)
+        //homeCollectionView.setCollectionViewLayout(generateLayout(), animated: false)
         
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
+    /*
     private func generateLayout()->UICollectionViewLayout{
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.8))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .absolute(300))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
     }
+     */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCollectionViewCell
-        cell.contentView.layer.cornerRadius = 2.0
+        cell.layer.cornerRadius = 20.0
+        
         return cell;
     }
     
